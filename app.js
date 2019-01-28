@@ -43,7 +43,8 @@ fileInput.addEventListener("change", function()
 	});
 	reader.readAsDataURL(file);
 });
-hiddenImg.addEventListener("load", function()
+
+function imageLoaded()
 {
 	// Clamp size (TODO: to window size)
 	var x = 0;
@@ -74,7 +75,10 @@ hiddenImg.addEventListener("load", function()
 	// Scale the image to fill the canvas
 	ctx.clearRect(0, 0, displayImg.width, displayImg.height);
 	ctx.drawImage(hiddenImg, 0, 0, hiddenImg.width, hiddenImg.height, x, y, scaledWidth, scaledHeight);
-});
+}
+
+hiddenImg.addEventListener("load", imageLoaded);
+setTimeout(imageLoaded, 1000);
 
 // Handle click
 displayImg.addEventListener("click", function(e)

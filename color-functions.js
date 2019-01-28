@@ -75,7 +75,7 @@ function labToRgb(color)
     };
 }
 
-if (module)
+if (typeof module !== "undefined")
     module.exports = {
         rgbToLab: rgbToLab,
         labToRgb: labToRgb

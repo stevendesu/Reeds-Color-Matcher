@@ -27,7 +27,7 @@ canvas {
 }
 
 .colorDisplay {
-	background: white;
+	background: lightgrey;
 	font-size: 20px;
 	border-radius: 10px;
 	overflow: hidden;
