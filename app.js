@@ -160,4 +160,4 @@ window.addEventListener("resize", function()
 	drawImage();
 });
 
-setTimeout(imageLoaded, 1000);
+setTimeout(drawImage, 1000);
