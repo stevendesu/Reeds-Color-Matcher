@@ -164,6 +164,9 @@ function disableMagnification(canvas)
 	canvas.removeEventListener("touchend", restoreImage);
 	canvas.removeEventListener("mouseout", restoreImage);
 
+	// Delete the magnifier
+	document.body.removeChild(activeMagnifiers[canvas].magnifier);
+
 	// Then remove it from the activeMagnifiers
 	delete activeMagnifiers[canvas];
 }
