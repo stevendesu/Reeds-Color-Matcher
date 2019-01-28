@@ -20,8 +20,21 @@ var products = [
 	{name: "Black", rgb: "#030303", l: 0.8225277727189955, a: 0.00011190395268756426, b: -0.0002214172336256759},
 	{name: "Ash Gray", rgb: "#aca1a1", l: 67.1520048381346, a: 3.988802170038108, b: 1.4263941407061997},
 	{name: "Evergreen", rgb: "#394f46", l: 31.58739822527197, a: -10.687857290307246, b: 2.5715400883672856},
-	{name: "Charcoal Gray", rgb: "#565656", l: 36.5667013570487, a: 0.0023838545715193504, b: -0.004716585582842381},
+	{name: "Charcoal Gray", rgb: "#565656", l: 36.5667013570487, a: 0.0023838545715193504, b: -0.004716585582842381}
 ];
+
+// Write something here:
+
+for (var x = 0; x < products.length; x++) {
+	console.log(products[x].name);
+	// Create a <div>, and puts it in "#color-list"
+	var productColor = document.createElement("div");
+	productColor.innerHTML = "<p>" + products[x].name + "</p>";
+	document.getElementById("color-list").appendChild(productColor);
+	productColor.style.backgroundColor = (products[x].rgb)
+}
+
+// End here
 
 var fileInput = document.getElementById("fileInput");
 var hiddenImg = document.getElementById("hiddenImg");
