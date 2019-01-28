@@ -89,7 +89,7 @@ body {
 	border: solid #000 1px;  
 }
   
-  .img-magnifier-glass {
+.img-magnifier-glass {
 	position: absolute;
 	border: 3px solid #000;
 	border-radius: 50%;
@@ -97,31 +97,29 @@ body {
 	/*Set the size of the magnifier glass:*/
 	width: 100px;
 	height: 100px;
-  }
-  header {
-	  margin-left: 40px;
-  }
-  h2 {
-	  font-size: 20px;
-	  margin-top: 2px;
-	  margin-left:10px;
-  }
+}
+header {
+	margin-left: 40px;
+}
+h2 {
+	font-size: 20px;
+	margin-top: 2px;
+	margin-left:10px;
+}
   
-  #color-list div {
-	  text-align: center;
-	  display: inline-block;
-	  height: 100px;
-	  width: 100px;
-	  margin: 10px;
-	  border: 1px solid #000;
-	  vertical-align: top;
-	  -webkit-text-fill-color: white;
-	  text-shadow:
-	  2px 2px 0 #000,
-	  -1px -1px 0 #000,  
-	  1px -1px 0 #000,
-	 -1px  1px 0 #000,
-	  1px  1px 0 #000; 
-	 
-	  
-  }
+#color-list div {
+	text-align: center;
+	display: inline-block;
+	height: 100px;
+	width: 100px;
+	margin: 10px;
+	border: 1px solid #000;
+	vertical-align: top;
+	-webkit-text-fill-color: white;
+	text-shadow:
+	2px 2px 0 #000,
+	-1px -1px 0 #000,  
+	1px -1px 0 #000,
+	-1px  1px 0 #000,
+	1px  1px 0 #000; 
+}

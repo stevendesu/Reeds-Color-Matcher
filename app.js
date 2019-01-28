@@ -47,6 +47,8 @@ var closestComplementDiv = document.getElementById("closestComplementDiv");
 
 function drawImage()
 {
+	disableMagnification(displayImg);
+
 	var x = 0;
 	var y = 0;
 
@@ -167,7 +169,6 @@ window.addEventListener("load", function()
 
 window.addEventListener("resize", function()
 {
-	disableMagnification(displayImg);
 	displayImg.height = displayImg.clientHeight;
 	displayImg.width = displayImg.clientWidth;
 	drawImage();

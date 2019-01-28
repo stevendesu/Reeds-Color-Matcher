@@ -158,6 +158,10 @@ function enableMagnification(canvas, opts)
 
 function disableMagnification(canvas)
 {
+	// First, see if we even have an active magnifier
+	if (!activeMagnifiers[canvas])
+		return;
+
 	// Remove all event listeners
 	canvas.removeEventListener("touchmove", drawMagnifier);
 	canvas.removeEventListener("mousemove", drawMagnifier);
