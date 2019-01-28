@@ -32,21 +32,8 @@ var selectedColor = document.getElementById("selectedColor");
 var closestMatchDiv = document.getElementById("closestMatchDiv");
 var closestComplementDiv = document.getElementById("closestComplementDiv");
 
-// Handle file selection
-fileInput.addEventListener("change", function()
+function drawImage()
 {
-	var file = fileInput.files[0];
-	var reader = new FileReader();
-	reader.addEventListener("load", function(e)
-	{
-		hiddenImg.src = e.target.result;
-	});
-	reader.readAsDataURL(file);
-});
-
-function imageLoaded()
-{
-	// Clamp size (TODO: to window size)
 	var x = 0;
 	var y = 0;
 
@@ -75,17 +62,32 @@ function imageLoaded()
 	// Scale the image to fill the canvas
 	ctx.clearRect(0, 0, displayImg.width, displayImg.height);
 	ctx.drawImage(hiddenImg, 0, 0, hiddenImg.width, hiddenImg.height, x, y, scaledWidth, scaledHeight);
+
+	enableMagnification(displayImg, {
+		radius: displayImg.clientWidth * 0.1,
+		zoom: 8
+	});
 }
 
-hiddenImg.addEventListener("load", imageLoaded);
-setTimeout(imageLoaded, 1000);
+// Handle file selection
+fileInput.addEventListener("change", function()
+{
+	var file = fileInput.files[0];
+	var reader = new FileReader();
+	reader.addEventListener("load", function(e)
+	{
+		disableMagnification(displayImg);
+		hiddenImg.src = e.target.result;
+	});
+	reader.readAsDataURL(file);
+});
+hiddenImg.addEventListener("load", drawImage);
 
 // Handle click
-displayImg.addEventListener("click", function(e)
+function handleClick(e)
 {
-	var rect = displayImg.getBoundingClientRect();
-	var x = e.clientX - rect.x;
-	var y = e.clientY - rect.y;
+	var x = e.offsetX;
+	var y = e.offsetY;
 	// Grab color at mouse location
 	var selected = ctx.getImageData(x, y, 1, 1).data;
 	selected = {
@@ -140,7 +142,9 @@ displayImg.addEventListener("click", function(e)
 	document.getElementById("closestname").innerText = closestMatch.name;
 	closestComplementDiv.style.backgroundColor = closestComplement.rgb;
 	document.getElementById("complementary").innerText = closestComplement.name;
-});
+}
+displayImg.addEventListener("click", handleClick);
+displayImg.addEventListener("touchend", handleClick);
 
 window.addEventListener("load", function()
 {
@@ -150,6 +154,10 @@ window.addEventListener("load", function()
 
 window.addEventListener("resize", function()
 {
+	disableMagnification(displayImg);
 	displayImg.height = displayImg.clientHeight;
 	displayImg.width = displayImg.clientWidth;
+	drawImage();
 });
+
+setTimeout(imageLoaded, 1000);
