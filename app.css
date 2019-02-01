@@ -40,17 +40,20 @@ body {
 	-webkit-text-fill-color: white;
 	
 	text-shadow:
-	  2px 2px 0 #000,
-	  /* Simulated effect for Firefox and Opera
-		 and nice enhancement for WebKit */
-	  -1px -1px 0 #000,  
-	  1px -1px 0 #000,
-	 -1px  1px 0 #000,
-	  1px  1px 0 #000; 
-	 
+		2px 2px 0 #000,
+		/* Simulated effect for Firefox and Opera
+			and nice enhancement for WebKit */
+		-1px -1px 0 #000,
+		1px -1px 0 #000,
+		-1px  1px 0 #000,
+		1px  1px 0 #000;
 }
 
-#selectedColor {
+.colorDisplay.short {
+	padding-top: 50%;
+}
+
+.selectedColor {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -62,25 +65,32 @@ body {
     border-bottom-left-radius: 10px;
 }
 
-#closestMatchDiv, #closestComplementDiv {
+#closestMatchDiv, #closestComplementDiv, #indoorMatchDiv, #nonmetalMatchDiv, #nonmetalIndoorMatchDiv {
 	position: absolute;
 	right: 0;
 	height: 50%;
 	width: 50%;
 	color: #fff;
+	border: solid #000 1px;
 	/* -webkit-text-stroke: #000; */
 }
 
 #closestMatchDiv {
 	top: 0;
-	border: solid #000 1px;
 	border-bottom: none;
 	border-top-right-radius: 10px;
 }
 
 #closestComplementDiv {
 	bottom: 0;
-	border: solid #000 1px;
+	border-bottom-right-radius: 10px;
+}
+
+#indoorMatchDiv, #nonmetalMatchDiv, #nonmetalIndoorMatchDiv {
+	top: 0;
+	bottom: 0;
+	height: 100%;
+	border-top-right-radius: 10px;
 	border-bottom-right-radius: 10px;
 }
 
@@ -122,4 +132,8 @@ h2 {
 	1px -1px 0 #000,
 	-1px  1px 0 #000,
 	1px  1px 0 #000; 
+}
+
+.margin-bottom {
+	margin-bottom: 1rem;
 }

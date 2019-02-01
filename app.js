@@ -41,7 +41,7 @@ var hiddenImg = document.getElementById("hiddenImg");
 var displayImg = document.getElementById("displayImg");
 var ctx = displayImg.getContext("2d");
 
-var selectedColor = document.getElementById("selectedColor");
+var selectedColor = document.getElementsByClassName("selectedColor");
 var closestMatchDiv = document.getElementById("closestMatchDiv");
 var closestComplementDiv = document.getElementById("closestComplementDiv");
 
@@ -152,7 +152,10 @@ function handleClick(e)
 	}
 	// Output (TODO)
 	selected = labToRgb(selected);
-	selectedColor.style.backgroundColor = "rgb(" + selected.r + ", " + selected.g + ", " + selected.b + ")";
+	for (var i = 0; i < selectedColor.length; i++)
+	{
+		selectedColor[i].style.backgroundColor = "rgb(" + selected.r + ", " + selected.g + ", " + selected.b + ")";
+	}
 	closestMatchDiv.style.backgroundColor = closestMatch.rgb;
 	document.getElementById("closestname").innerText = closestMatch.name;
 	closestComplementDiv.style.backgroundColor = closestComplement.rgb;

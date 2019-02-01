@@ -6,7 +6,7 @@
 	<meta name="description" content="I trust the guys at Flex360 are smart enough to figure out how to copy this code and put it on a page" />
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="app.css" />
-	<link rel="stylesheet" href="inputlable.css"/>
+	<link rel="stylesheet" href="inputlabel.css"/>
 </head>
 <header>
 	<h1>Reed's Metal Color Matcher</h1>
@@ -14,18 +14,43 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-6">
+			<div class="col-xs-12 text-center">
+				<input type="file" id="fileInput"/>
+				<label for="fileInput" class="custom-file-input">Upload File</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6 margin-bottom">
 				<img id="hiddenImg" style="display:none;" src="reedsMetals.jpg" />
 				<div class="img-magnifier-container">
 					<canvas id="displayImg"></canvas>
 				</div>
-				<input type="file" id="fileInput"/> <label for="fileInput" class="custom-file-input">Upload File</label>	
 			</div>
-			<div class="col-sm-6">
+			<div class="col-sm-6 margin-bottom">
 				<div class="colorDisplay">
-					<div id="selectedColor"><h2>Selected Color</h2></div>
+					<div class="selectedColor"><h2>Selected Color</h2></div>
 					<div id="closestMatchDiv"><h2>Closest Match</h2><h2 id="closestname"></h2></div>
 					<div id="closestComplementDiv"><h2>Closest Complementary</h2><h2 id="complementary"></h2></div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-4">
+				<div class="colorDisplay short">
+					<div class="selectedColor"><h2>Selected Color</h2></div>
+					<div id="indoorMatchDiv"><h2>Indoor / Cloudy Day</h2></div>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="colorDisplay short">
+					<div class="selectedColor"><h2>Selected Color</h2></div>
+					<div id="nonmetalMatchDiv"><h2>Non-Metal, Sunny</h2></div>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="colorDisplay short">
+					<div class="selectedColor"><h2>Selected Color</h2></div>
+					<div id="nonmetalIndoorMatchDiv"><h2>Non-Metal, Indoor</h2></div>
 				</div>
 			</div>
 		</div>
