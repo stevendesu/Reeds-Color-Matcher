@@ -54,6 +54,8 @@ body {
 }
 
 .selectedColor {
+	text-align: center;
+	padding: 10px;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -66,6 +68,8 @@ body {
 }
 
 #closestMatchDiv, #closestComplementDiv, #indoorMatchDiv, #nonmetalMatchDiv, #nonmetalIndoorMatchDiv {
+	text-align: center;
+	padding: 10px;
 	position: absolute;
 	right: 0;
 	height: 50%;
@@ -116,7 +120,12 @@ h2 {
 	margin-top: 2px;
 	margin-left:10px;
 }
-  
+
+#color-list {
+	text-align: center;
+}
+
+
 #color-list div {
 	text-align: center;
 	display: inline-block;

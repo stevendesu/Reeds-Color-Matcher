@@ -7,18 +7,25 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="app.css" />
 	<link rel="stylesheet" href="inputlabel.css"/>
+	<link rel="stylesheet" href="slider.css"/>
+
 </head>
 <header>
 	<h1>Reed's Metal Color Matcher</h1>
 </header>
 <body>
 	<div class="container">
-		<input type="file" id="fileInput"/> <label for="fileInput" class="custom-file-input">Upload File</label>
 		<div class="row">
-			<div class="col-xs-12 text-center">
+			<div class="col-sm-6 text-center">
 				<input type="file" id="fileInput"/>
 				<label for="fileInput" class="custom-file-input">Upload File</label>
 			</div>
+				<div class="col-sm-6 text-center">
+					<label class="switch">
+						<input type="checkbox">
+						<span class="slider round"></span>
+					</label>
+				</div>
 		</div>
 		<div class="row">
 			<div class="col-sm-6 margin-bottom">
