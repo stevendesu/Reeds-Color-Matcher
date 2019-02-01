@@ -6,6 +6,12 @@ body {
 		rgb(7,62,96));
 }
 
+.toggle-label {
+	font-size: 2rem;
+	vertical-align: middle;
+	margin: 4px 10px;
+}
+
 #displayImg {
 	border-radius: 9px;
 	position: absolute;

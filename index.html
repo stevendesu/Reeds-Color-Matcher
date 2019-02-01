@@ -1,31 +1,34 @@
 <html>
+
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Color Match Demo</title>
 	<meta name="description" content="I trust the guys at Flex360 are smart enough to figure out how to copy this code and put it on a page" />
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="app.css" />
-	<link rel="stylesheet" href="inputlabel.css"/>
-	<link rel="stylesheet" href="slider.css"/>
-
+	<link rel="stylesheet" href="inputlabel.css" />
+	<link rel="stylesheet" href="slider.css" />
 </head>
 <header>
 	<h1>Reed's Metal Color Matcher</h1>
 </header>
+
 <body>
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-6 text-center">
-				<input type="file" id="fileInput"/>
+				<input type="file" id="fileInput" />
 				<label for="fileInput" class="custom-file-input">Upload File</label>
 			</div>
-				<div class="col-sm-6 text-center">
-					<label class="switch">
-						<input type="checkbox">
-						<span class="slider round"></span>
-					</label>
-				</div>
+			<div class="col-sm-6 text-center">
+				<span class="toggle-label">Exact</span>
+				<label class="switch">
+					<input type="checkbox" />
+					<span class="slider round"></span>
+				</label>
+				<span class="toggle-label">Average</span>
+			</div>
 		</div>
 		<div class="row">
 			<div class="col-sm-6 margin-bottom">
@@ -36,29 +39,49 @@
 			</div>
 			<div class="col-sm-6 margin-bottom">
 				<div class="colorDisplay">
-					<div class="selectedColor"><h2>Selected Color</h2></div>
-					<div id="closestMatchDiv"><h2>Closest Match</h2><h2 id="closestname"></h2></div>
-					<div id="closestComplementDiv"><h2>Closest Complementary</h2><h2 id="complementary"></h2></div>
+					<div class="selectedColor">
+						<h2>Selected Color</h2>
+					</div>
+					<div id="closestMatchDiv">
+						<h2>Closest Match</h2>
+						<h2 id="closestname"></h2>
+					</div>
+					<div id="closestComplementDiv">
+						<h2>Closest Complementary</h2>
+						<h2 id="complementary"></h2>
+					</div>
 				</div>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-sm-4">
 				<div class="colorDisplay short">
-					<div class="selectedColor"><h2>Selected Color</h2></div>
-					<div id="indoorMatchDiv"><h2>Indoor / Cloudy Day</h2></div>
+					<div class="selectedColor">
+						<h2>Selected Color</h2>
+					</div>
+					<div id="indoorMatchDiv">
+						<h2>Indoor / Cloudy Day</h2>
+					</div>
 				</div>
 			</div>
 			<div class="col-sm-4">
 				<div class="colorDisplay short">
-					<div class="selectedColor"><h2>Selected Color</h2></div>
-					<div id="nonmetalMatchDiv"><h2>Non-Metal, Sunny</h2></div>
+					<div class="selectedColor">
+						<h2>Selected Color</h2>
+					</div>
+					<div id="nonmetalMatchDiv">
+						<h2>Non-Metal, Sunny</h2>
+					</div>
 				</div>
 			</div>
 			<div class="col-sm-4">
 				<div class="colorDisplay short">
-					<div class="selectedColor"><h2>Selected Color</h2></div>
-					<div id="nonmetalIndoorMatchDiv"><h2>Non-Metal, Indoor</h2></div>
+					<div class="selectedColor">
+						<h2>Selected Color</h2>
+					</div>
+					<div id="nonmetalIndoorMatchDiv">
+						<h2>Non-Metal, Indoor</h2>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -73,4 +96,5 @@
 	<script src="magnifier.js"></script>
 	<script src="app.js"></script>
 </body>
+
 </html>
