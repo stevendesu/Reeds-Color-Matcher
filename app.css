@@ -73,35 +73,35 @@ body {
     border-bottom-left-radius: 10px;
 }
 
-#closestMatchDiv, #closestComplementDiv, #indoorMatchDiv, #nonmetalMatchDiv, #nonmetalIndoorMatchDiv {
+.matchDiv {
 	text-align: center;
 	padding: 10px;
 	position: absolute;
 	right: 0;
-	height: 50%;
 	width: 50%;
 	color: #fff;
 	border: solid #000 1px;
 	/* -webkit-text-stroke: #000; */
-}
-
-#closestMatchDiv {
-	top: 0;
-	border-bottom: none;
-	border-top-right-radius: 10px;
-}
-
-#closestComplementDiv {
-	bottom: 0;
-	border-bottom-right-radius: 10px;
-}
-
-#indoorMatchDiv, #nonmetalMatchDiv, #nonmetalIndoorMatchDiv {
 	top: 0;
 	bottom: 0;
 	height: 100%;
 	border-top-right-radius: 10px;
 	border-bottom-right-radius: 10px;
+}
+
+#roofSunMatchDiv {
+	top: 0;
+	bottom: initial;
+	height: 50%;
+	border-bottom: none;
+	border-bottom-right-radius: 0;
+}
+
+#complementMatchDiv {
+	bottom: 0;
+	top: initial;
+	height: 50%;
+	border-top-right-radius: 0;
 }
 
 .img-magnifier-container {

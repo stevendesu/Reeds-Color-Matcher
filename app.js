@@ -23,7 +23,109 @@ var products = [
 	{name: "Charcoal Gray", rgb: "#565656", l: 36.5667013570487, a: 0.0023838545715193504, b: -0.004716585582842381}
 ];
 
-// Write something here:
+/*
+ * Due to reflections on metal, shadows, sunlight, etc - the appearance of metal
+ * may differ drastically from one picture to another. This is an attempt to, at
+ * least to some degree, account for these differences.
+ * 
+ * I started by using around 40 pictures from the Reed's Metals Gallery. For
+ * each of these pictures I sampled a few random pixels from the image and
+ * compared the displayed color to the expected color.
+ * 
+ * I then looked for patterns in the differences between L, a, and b values.
+ * This led me to discover two distinct classes of pictures that are fairly
+ * easy to calculate the actual pixel from a given expected pixel (a roof in
+ * the sun, or a wall in the sun). A third class existed for roofs and walls in
+ * shadow, however these varied much more greatly based on how dark the shadow
+ * was - making it nearly impossible to get an average that covered all use
+ * cases. Although it's a poor estimate, I did average the effects of various
+ * shadows to get a general idea of how metal behaves when photographed.
+ * 
+ * Finally, I passed through the exact expected values to get the "nonMetal".
+ * 
+ * When a pixel is clicked, I convert that pixel to four different values:
+ *  - What color metal roof, in the sun, would create this pixel?
+ *  - What color metal wall, in the sun, would create this pixel?
+ *  - What color metal, in shadow, would create this pixel?
+ *  - What color is this pixel?
+ * 
+ * I then perform color matching for all four of these values.
+ */
+var offsets = {
+	roofSun: {
+		l: {
+			a: 0.0102,
+			b: -0.1813,
+			c: 1.8103
+		},
+		a: {
+			// My training data for this value was insufficient, leading to a
+			// regression that failed to extrapolate for red roofs well (I only
+			// had red walls to work with in the training data)
+			// To counter this, I used a linear regression instead of quadratic
+			a: 0,
+			b: 2.4278,
+			c: -3.9246
+		},
+		b: {
+			a: 0.0874,
+			b: 0.2109,
+			c: 3.0835
+		}
+	},
+	wallSun: {
+		l: {
+			a: -0.0011,
+			b: 0.8578,
+			c: -4.5922
+		},
+		a: {
+			a: -0.0033,
+			b: 0.8433,
+			c: -0.2491
+		},
+		b: {
+			a: -0.0133,
+			b: 1.3125,
+			c: -3.5601
+		}
+	},
+	overcast: {
+		l: {
+			a: -0.0092,
+			b: 1.8712,
+			c: -10.191
+		},
+		a: {
+			a: -0.0042,
+			b: 1.0785,
+			c: 3.0227
+		},
+		b: {
+			a: 0.0092,
+			b: 0.8067,
+			c: 0.6918
+		}
+	},
+	// Pass through without modification
+	nonMetal: {
+		l: {
+			a: 0,
+			b: 1,
+			c: 0
+		},
+		a: {
+			a: 0,
+			b: 1,
+			c: 0
+		},
+		b: {
+			a: 0,
+			b: 1,
+			c: 0
+		}
+	}
+};
 
 for (var x = 0; x < products.length; x++) {
 	console.log(products[x].name);
@@ -33,8 +135,6 @@ for (var x = 0; x < products.length; x++) {
 	document.getElementById("color-list").appendChild(productColor);
 	productColor.style.backgroundColor = (products[x].rgb)
 }
-
-// End here
 
 var fileInput = document.getElementById("fileInput");
 var hiddenImg = document.getElementById("hiddenImg");
@@ -98,11 +198,32 @@ fileInput.addEventListener("change", function()
 });
 hiddenImg.addEventListener("load", drawImage);
 
+function findClosest(labColor)
+{
+	var closestMatch = null;
+	var minDistance = 9e9;
+	for (var i = 0; i < products.length; i++)
+	{
+		var distance = (
+			Math.pow(labColor.l - products[i].l, 2) +
+			Math.pow(labColor.a - products[i].a, 2) +
+			Math.pow(labColor.b - products[i].b, 2)
+		);
+		if (distance < minDistance)
+		{
+			minDistance = distance;
+			closestMatch = products[i];
+		}
+	}
+	return closestMatch;
+}
+
 // Handle click
 function handleClick(e)
 {
 	var x = e.offsetX;
 	var y = e.offsetY;
+
 	// Grab color at mouse location
 	var selected = ctx.getImageData(x, y, 1, 1).data;
 	selected = {
@@ -115,51 +236,51 @@ function handleClick(e)
 		g: 255 - selected.g,
 		b: 255 - selected.b
 	};
+
+	console.log("Originally clicked:");
+	console.log(selected);
+
 	// Convert to LAB color space
 	selected = rgbToLab(selected);
 	complement = rgbToLab(complement);
-	// Find the closest matching product
-	var closestMatch = null;
-	var minDistance = 9e9;
-	for (var i = 0; i < products.length; i++)
+
+	console.log("Converted to:");
+	console.log(selected);
+
+	// Compute offsets and closest match
+	var lab = {};
+	var closest = {};
+	for (var type in offsets)
 	{
-		var distance = (
-			Math.pow(selected.l - products[i].l, 2) +
-			Math.pow(selected.a - products[i].a, 2) +
-			Math.pow(selected.b - products[i].b, 2)
-		);
-		if (distance < minDistance)
-		{
-			minDistance = distance;
-			closestMatch = products[i];
-		}
+		lab[type] = {
+			l: offsets[type].l.a * selected.l * selected.l + offsets[type].l.b * selected.l + offsets[type].l.c,
+			a: offsets[type].a.a * selected.a * selected.a + offsets[type].a.b * selected.a + offsets[type].a.c,
+			b: offsets[type].b.a * selected.b * selected.b + offsets[type].b.b * selected.b + offsets[type].b.c
+		};
+		closest[type] = findClosest(lab[type]);
 	}
-	// Find closest matching complementary product
-	var closestComplement = null;
-	var minDistance = 9e9;
-	for (var i = 0; i < products.length; i++)
+
+	console.log("By type:");
+	console.log(lab);
+
+	// Find the closest complement
+	lab["complement"] = complement;
+	closest["complement"] = findClosest(complement);
+
+	// Output
+	for (var type in closest)
 	{
-		var distance = (
-			Math.pow(complement.l - products[i].l, 2) +
-			Math.pow(complement.a - products[i].a, 2) +
-			Math.pow(complement.b - products[i].b, 2)
-		);
-		if (distance < minDistance)
-		{
-			minDistance = distance;
-			closestComplement = products[i];
-		}
+		var rgb = labToRgb(lab[type]);
+		var selectedDiv = document.getElementById(type + "Selected");
+		if (selectedDiv)
+			selectedDiv.style.backgroundColor = "rgb(" + rgb.r + "," + rgb.g + "," + rgb.b + ")";
+		var matchDiv = document.getElementById(type + "MatchDiv");
+		if (matchDiv)
+			matchDiv.style.backgroundColor = closest[type].rgb;
+		var nameDiv = document.getElementById(type + "Name");
+		if (nameDiv)
+			nameDiv.innerText = closest[type].name;
 	}
-	// Output (TODO)
-	selected = labToRgb(selected);
-	for (var i = 0; i < selectedColor.length; i++)
-	{
-		selectedColor[i].style.backgroundColor = "rgb(" + selected.r + ", " + selected.g + ", " + selected.b + ")";
-	}
-	closestMatchDiv.style.backgroundColor = closestMatch.rgb;
-	document.getElementById("closestname").innerText = closestMatch.name;
-	closestComplementDiv.style.backgroundColor = closestComplement.rgb;
-	document.getElementById("complementary").innerText = closestComplement.name;
 }
 displayImg.addEventListener("click", handleClick);
 displayImg.addEventListener("touchend", handleClick);
