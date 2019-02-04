@@ -32,19 +32,19 @@
 		</div>
 		<div class="row">
 			<div class="col-sm-6 margin-bottom">
-				<img id="hiddenImg" style="display:none;" src="reedsMetals.jpg" />
+				<img id="hiddenImg" style="display:none;" />
 				<div class="img-magnifier-container">
 					<canvas id="displayImg"></canvas>
 				</div>
 			</div>
 			<div class="col-sm-6 margin-bottom">
 				<div class="colorDisplay">
-					<div class="selectedColor" id="roofSunSelected">
+					<div class="selectedColor" id="nonMetalSelected">
 						<h2>Selected Color</h2>
 					</div>
-					<div class="matchDiv" id="roofSunMatchDiv">
-						<h2>Sunny Roof</h2>
-						<h2 id="roofSunName"></h2>
+					<div class="matchDiv" id="nonMetalMatchDiv">
+						<h2>Non-Metal</h2>
+						<h2 id="nonMetalName"></h2>
 					</div>
 					<div class="matchDiv" id="complementMatchDiv">
 						<h2>Closest Complement</h2>
@@ -54,6 +54,17 @@
 			</div>
 		</div>
 		<div class="row">
+			<div class="col-sm-4">
+				<div class="colorDisplay short">
+					<div class="selectedColor" id="roofSunSelected">
+						<h2>Selected Color</h2>
+					</div>
+					<div class="matchDiv" id="roofSunMatchDiv">
+						<h2>Sunny Roof</h2>
+						<h2 id="roofSunName"></h2>
+					</div>
+				</div>
+			</div>
 			<div class="col-sm-4">
 				<div class="colorDisplay short">
 					<div class="selectedColor" id="wallSunSelected">
@@ -73,17 +84,6 @@
 					<div class="matchDiv" id="overcastMatchDiv">
 						<h2>Overcast</h2>
 						<h2 id="overcastName"></h2>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-4">
-				<div class="colorDisplay short">
-					<div class="selectedColor" id="nonMetalSelected">
-						<h2>Selected Color</h2>
-					</div>
-					<div class="matchDiv" id="nonMetalMatchDiv">
-						<h2>Non-Metal</h2>
-						<h2 id="nonMetalName"></h2>
 					</div>
 				</div>
 			</div>

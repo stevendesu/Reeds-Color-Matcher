@@ -89,7 +89,7 @@ body {
 	border-bottom-right-radius: 10px;
 }
 
-#roofSunMatchDiv {
+#nonMetalMatchDiv {
 	top: 0;
 	bottom: initial;
 	height: 50%;
@@ -102,6 +102,10 @@ body {
 	top: initial;
 	height: 50%;
 	border-top-right-radius: 0;
+}
+
+.noLeftBorder {
+	border-left: none;
 }
 
 .img-magnifier-container {

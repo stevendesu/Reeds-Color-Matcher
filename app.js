@@ -128,8 +128,6 @@ var offsets = {
 };
 
 for (var x = 0; x < products.length; x++) {
-	console.log(products[x].name);
-	// Create a <div>, and puts it in "#color-list"
 	var productColor = document.createElement("div");
 	productColor.innerHTML = "<p>" + products[x].name + "</p>";
 	document.getElementById("color-list").appendChild(productColor);
@@ -237,15 +235,9 @@ function handleClick(e)
 		b: 255 - selected.b
 	};
 
-	console.log("Originally clicked:");
-	console.log(selected);
-
 	// Convert to LAB color space
 	selected = rgbToLab(selected);
 	complement = rgbToLab(complement);
-
-	console.log("Converted to:");
-	console.log(selected);
 
 	// Compute offsets and closest match
 	var lab = {};
@@ -260,9 +252,6 @@ function handleClick(e)
 		closest[type] = findClosest(lab[type]);
 	}
 
-	console.log("By type:");
-	console.log(lab);
-
 	// Find the closest complement
 	lab["complement"] = complement;
 	closest["complement"] = findClosest(complement);
@@ -273,13 +262,20 @@ function handleClick(e)
 		var rgb = labToRgb(lab[type]);
 		var selectedDiv = document.getElementById(type + "Selected");
 		if (selectedDiv)
+		{
 			selectedDiv.style.backgroundColor = "rgb(" + rgb.r + "," + rgb.g + "," + rgb.b + ")";
+		}
 		var matchDiv = document.getElementById(type + "MatchDiv");
 		if (matchDiv)
+		{
 			matchDiv.style.backgroundColor = closest[type].rgb;
+			matchDiv.classList.add("noLeftBorder");
+		}
 		var nameDiv = document.getElementById(type + "Name");
 		if (nameDiv)
+		{
 			nameDiv.innerText = closest[type].name;
+		}
 	}
 }
 displayImg.addEventListener("click", handleClick);
@@ -289,6 +285,7 @@ window.addEventListener("load", function()
 {
 	displayImg.height = displayImg.clientHeight;
 	displayImg.width = displayImg.clientWidth;
+	hiddenImg.src="reedsMetals.jpg";
 });
 
 window.addEventListener("resize", function()
@@ -297,5 +294,3 @@ window.addEventListener("resize", function()
 	displayImg.width = displayImg.clientWidth;
 	drawImage();
 });
-
-setTimeout(drawImage, 1000);
