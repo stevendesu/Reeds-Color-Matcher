@@ -1,26 +1,26 @@
 var products = [
-	{name: "Marine Green", rgb: "#5b9994", l: 59.10805225847071, a: -21.226190857419837, b: -3.6784908066149757},
-	{name: "Polar White", rgb: "#eceaee", l: 92.94940675856375, a: 1.3865652933460204, b: -1.7073577561621978},
-	{name: "Pure White", rgb: "#f0f2f3", l: 95.37132322963265, a: -0.4802109748781591, b: -0.7239902773891638},
-	{name: "Ivory", rgb: "#f8e5c6", l: 91.71729056754174, a: 1.656383137754569, b: 17.466577278962724},
-	{name: "Light Stone", rgb: "#cccab2", l: 80.9012951517415, a: -3.413358794217447, b: 12.23590317440182},
-	{name: "Mocha Tan", rgb: "#b1946f", l: 63.07304270396091, a: 5.513673618457227, b: 23.62249483782255},
-	{name: "Patina Green", rgb: "#6c7f56", l: 50.732539688376235, a: -14.743226861996806, b: 20.068934529424876},
-	{name: "Forest Green", rgb: "#10411e", l: 23.620100253062212, a: -25.355816712479438, b: 16.671610864074317},
-	{name: "Hawaiian Blue", rgb: "#426d7e", l: 43.65649215611061, a: -9.974711468208747, b: -14.073101039491442},
-	{name: "Gallery Blue", rgb: "#073e60", l: 24.749218659104592, a: -2.869702094910026, b: -24.816415362180976},
-	{name: "Barn Red", rgb: "#6e1f19", l: 24.84365555082487, a: 34.485380344076525, b: 23.69669225535797},
-	{name: "Patriot Red", rgb: "#8c181b", l: 30.176223626166788, a: 47.10943479156751, b: 30.05415911558481},
-	{name: "Burgundy", rgb: "#512127", l: 19.97780251791518, a: 23.13155469932593, b: 6.997576891800705},
-	{name: "Cocoa Brown", rgb: "#513d30", l: 27.57351125957655, a: 6.69182059639839, b: 11.387590364387156},
-	{name: "Metallic Copper", rgb: "#b15726", l: 47.370104755947565, a: 33.33327714850892, b: 43.74609331171564},
-	{name: "Old Town Gray", rgb: "#898b8e", l: 57.78618033695284, a: -0.13107383719218602, b: -1.861751624888175},
-	{name: "Clay", rgb: "#979888", l: 62.349757172680484, a: -3.3090894087378087, b: 8.295383054560146},
-	{name: "Burnished Slate", rgb: "#342019", l: 14.586788153546088, a: 8.643665496877784, b: 8.697140696212212},
-	{name: "Black", rgb: "#030303", l: 0.8225277727189955, a: 0.00011190395268756426, b: -0.0002214172336256759},
-	{name: "Ash Gray", rgb: "#aca1a1", l: 67.1520048381346, a: 3.988802170038108, b: 1.4263941407061997},
-	{name: "Evergreen", rgb: "#394f46", l: 31.58739822527197, a: -10.687857290307246, b: 2.5715400883672856},
-	{name: "Charcoal Gray", rgb: "#565656", l: 36.5667013570487, a: 0.0023838545715193504, b: -0.004716585582842381}
+	{name: "Arctic White", rgb: "#e0dbe2", l: 88.0902740285124, a: 2.61676194514221, b: -2.81771365007006},
+	{name: "Barn Red", rgb: "#832b22", l: 31.2550810566717, a: 36.6862028005417, b: 26.3450431863694},
+	{name: "Black", rgb: "#161517", l: 7.31704371999303, a: 0.992455344686352, b: -1.06338287849328},
+	{name: "Bright Red", rgb: "#a01d26", l: 34.8236085596387, a: 51.5467052569811, b: 30.0898585201577},
+	{name: "Burgundy", rgb: "#532f31", l: 23.6720950283359, a: 16.8714173977054, b: 5.58524759361067},
+	{name: "Burnished Slate", rgb: "#50443f", l: 30.0353193885052, a: 3.57563196781244, b: 4.58688454604211},
+	{name: "Charcoal Gray", rgb: "#5c585b", l: 38.2705507263466, a: 2.42833359799924, b: -1.10614742791229},
+	{name: "Clay", rgb: "#9f948a", l: 61.8704799198712, a: 2.30551451610161, b: 6.63311419676229},
+	{name: "Cocoa Brown", rgb: "#4f3836", l: 26.2746364783929, a: 9.53905346321743, b: 5.14987824208858},
+//	{name: "Copper Trinar", rgb: "", l: 0, a: 0, b: 0}, // Invalid product code
+	{name: "Evergreen", rgb: "#364e42", l: 31.2548311234148, a: -12.4624391963697, b: 4.41776638463374},
+	{name: "Forest Green", rgb: "#154033", l: 23.6719651034171, a: -18.6422330262289, b: 3.5573026727422},
+	{name: "Gallery Blue", rgb: "#20466c", l: 28.7992129155654, a: 0.444901918898399, b: -25.815337802195},
+	{name: "Ivory", rgb: "#e8d0bc", l: 84.7985970031582, a: 4.50975255350933, b: 12.6296572068999},
+	{name: "Light Gray", rgb: "#a7a1a7", l: 67.4354823779004, a: 2.59516237608687, b: -1.58901284873534},
+	{name: "Light Stone", rgb: "#cbbcae", l: 77.1864439462667, a: 3.09283347052181, b: 8.61302538683979},
+	{name: "Marine Green", rgb: "#639495", l: 58.0475244710623, a: -15.8707152189694, b: -5.89582940921558},
+//	{name: "Patina Green", rgb: "", l: 0, a: 0, b: 0}, // Not approved
+	{name: "Regal White", rgb: "#d1cace", l: 82.2940672950966, a: 3.35025603818828, b: -1.38484836592445},
+	{name: "Royal Blue", rgb: "#4c6e88", l: 44.8582150028961, a: -5.49955760739423, b: -18.1587164835457},
+	{name: "Sahara Tan", rgb: "#b6987e", l: 64.6770494170444, a: 7.03720846064265, b: 18.175612132069},
+	{name: "Slate Gray", rgb: "#4e5058", l: 33.648111147696, a: 0.740709000902035, b: -5.23536593131083},
 ];
 
 /*
@@ -143,6 +143,18 @@ var selectedColor = document.getElementsByClassName("selectedColor");
 var closestMatchDiv = document.getElementById("closestMatchDiv");
 var closestComplementDiv = document.getElementById("closestComplementDiv");
 
+var average = false;
+document.getElementById("average").addEventListener("change", function(e)
+{
+	disableMagnification(displayImg);
+	average = e.target.checked;
+	enableMagnification(displayImg, {
+		radius: displayImg.clientWidth * 0.1,
+		zoom: 8,
+		selectSize: average ? 3 : 0
+	});
+});
+
 function drawImage()
 {
 	disableMagnification(displayImg);
@@ -178,7 +190,8 @@ function drawImage()
 
 	enableMagnification(displayImg, {
 		radius: displayImg.clientWidth * 0.1,
-		zoom: 8
+		zoom: 8,
+		selectSize: average ? 3 : 0
 	});
 }
 
@@ -223,7 +236,33 @@ function handleClick(e)
 	var y = e.offsetY;
 
 	// Grab color at mouse location
-	var selected = ctx.getImageData(x, y, 1, 1).data;
+	var selected;
+	if (average)
+	{
+		selected = [0, 0, 0];
+		var count = 0;
+		for (var i = x - 3; i <= x + 3; i++)
+		{
+			for (var j = y - 3; j <= y + 3; j++)
+			{
+				if (x > 0 && y > 0 && x < displayImg.width && y < displayImg.height)
+				{
+					var pixel = ctx.getImageData(i, j, 1, 1).data;
+					selected[0] += pixel[0];
+					selected[1] += pixel[1];
+					selected[2] += pixel[2];
+					count ++;
+				}
+			}
+		}
+		selected[0] = selected[0] / count;
+		selected[1] = selected[1] / count;
+		selected[2] = selected[2] / count;
+	}
+	else
+	{
+		selected = ctx.getImageData(x, y, 1, 1).data;
+	}
 	selected = {
 		r: selected[0],
 		g: selected[1],

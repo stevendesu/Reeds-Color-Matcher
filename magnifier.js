@@ -90,12 +90,15 @@ function drawMagnifier(e)
 		ctx.stroke();
 	}
 
-	// Make the selected pixel red
+	// Make the selected pixel(s) red
+	// The "selectSize" will be added to all sides. So a "selectSize" of 3 means
+	// to select a 7x7 box of pixels (3 above, below, left, and right)
 	// First, find the exact start and end of said pixels
-	var centerStart = Math.floor(m.center / m.options.zoom) * m.options.zoom;
+	var centerStart = (Math.floor(m.center / m.options.zoom) - m.options.selectSize) * m.options.zoom;
 	ctx.save();
 	ctx.strokeStyle = "red";
-	ctx.rect(centerStart, centerStart, m.options.zoom, m.options.zoom);
+	var size = 2 * m.options.selectSize + 1;
+	ctx.rect(centerStart, centerStart, m.options.zoom * size, m.options.zoom * size);
 	ctx.stroke();
 	ctx.restore();
 
@@ -117,7 +120,8 @@ function enableMagnification(canvas, opts)
 	var defaults = {
 		radius: 50,
 		offset: 50,
-		zoom: 4
+		zoom: 4,
+		selectSize: 0
 	};
 	var options = Object.assign({}, defaults, opts);
 
